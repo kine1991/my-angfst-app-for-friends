@@ -44,6 +44,10 @@ export class HeaderForAdminComponent implements OnInit {
     this.isOpen = !this.isOpen
   }
 
+  isAuthenticated(){
+    return true
+  }
+
   // logout(event: Event){
   //   // console.log('logout', event)
   //   event.preventDefault()

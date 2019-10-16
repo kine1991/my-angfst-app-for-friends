@@ -7,7 +7,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { environment } from 'src/environments/environment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule,
     // AngularFireStorageModule,
     QuillModule.forRoot()
   ],
@@ -26,7 +24,6 @@ import { environment } from 'src/environments/environment';
     AngularFireModule, 
     AngularFirestoreModule,
     AngularFireAuthModule,
-    BrowserAnimationsModule,
     // AngularFireStorageModule,
     QuillModule,
   ]
