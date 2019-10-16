@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="header">
+        <!-- <button *ngIf="!isOpen" (click)="toggle()" class="icon-button" mat-icon-button ><mat-icon>menu</mat-icon></button> -->
+        <button (click)="toggle()" class="icon-button" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="header-name">My App</h1>
+        <div class="spacer"></div>
+        <ul class="items">
+            <li *ngFor="let item of items; index as i" class="item"><a class="link_nav" href="">{{item.name}}</a></li>
+        </ul>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="header-container" (click)="isOpen = false">
+      <mat-sidenav [opened]="isOpen"  mode="over" opened class="header-sidenav" [fixedInViewport]="true" [fixedTopGap]="0" [fixedBottomGap]="0">
+            <mat-nav-list>
+                <a mat-list-item routerLink="." *ngFor="let item of items; index as i">{{item.name}}</a>
+            </mat-nav-list>
+      </mat-sidenav>
+    
+      <mat-sidenav-content >
+          <router-outlet></router-outlet>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque soluta, dolore ullam fugit odit sed quaerat nam nesciunt voluptatum assumenda amet a ea? Sunt, ipsum nulla ab eveniet atque exercitationem.
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    
