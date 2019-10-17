@@ -23,4 +23,8 @@ export class Header1Component implements OnInit {
   toggle(){
     this.isOpen = ! this.isOpen
   }
+
+  ff(){
+    console.log('ff')
+  }
 }

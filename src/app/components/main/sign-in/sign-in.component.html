@@ -1,0 +1,27 @@
+<!-- <mat-card class="sign-in-page-mat-card">
+    <h1>sign-in</h1>
+    <h2 class="danger" *ngIf="message">{{message}}</h2>
+    <div class="danger" *ngIf="auth.error$ | async as error">{{error}}</div>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="sign-in-page-container">
+        <mat-form-field>
+            <input matInput placeholder="Enter your email" formControlName="email" required>
+            <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">{{getErrorMessageForEmail()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Enter your password" formControlName="password" type="password">
+            <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">{{getErrorMessageForPassword()}}</mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-icon-button >sign-in</button>
+        <button mat-icon-button [disabled]="form.invalid || submitted">sign-in</button>
+    </form>
+    
+</mat-card> -->
+
+
+<form [formGroup]="formSingIn" (ngSubmit)="onFormSubmit()">
+
+
+    <button (click)="xxx = 'fff'" type="button" mat-icon-button >{{xxx}}</button>
+    <button type="submit" >sign-in</button>
+</form>

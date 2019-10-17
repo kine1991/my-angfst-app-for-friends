@@ -13,6 +13,9 @@ import { Header1Component } from './components/main/header1/header1.component';
 import { RegisterComponent } from './components/main/register/register.component';
 import { HomeComponent } from './components/main/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/main/login/login.component';
+import { SignInComponent } from './components/main/sign-in/sign-in.component';
+import { SignUpComponent } from './components/main/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     Header1Component, 
     RegisterComponent,
     HomeComponent,
+    LoginComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularMaterialModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

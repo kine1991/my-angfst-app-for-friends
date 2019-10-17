@@ -48,8 +48,19 @@ h1.header-name {
   
   .header {
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
     right: 0;
+
   }
   
+
+  .main-layout{
+    top: 60px;
+    left: 0px;
+    right: 0;
+    // background: fuchsia;
+    z-index: 3;
+    position: relative;
+
+}

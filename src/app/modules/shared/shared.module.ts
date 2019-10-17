@@ -8,11 +8,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { environment } from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [], 
   imports: [
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -26,6 +29,8 @@ import { environment } from 'src/environments/environment';
     AngularFireAuthModule,
     // AngularFireStorageModule,
     QuillModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule { }
