@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
 
   submitted = false
   message: string
-  formSingIn: FormGroup
+  form: FormGroup
   xxx = 'aaa'
 
   constructor(
@@ -25,16 +25,16 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
 
-    this.formSingIn = new FormGroup({
+    this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
     });
   }
 
   getErrorMessageForEmail() {
-    if(this.formSingIn.get('email').hasError('required')){
+    if(this.form.get('email').hasError('required')){
       return 'email is required'
-    } else if(this.formSingIn.get('email').hasError('email')){
+    } else if(this.form.get('email').hasError('email')){
       return 'email is not valid'
     } else {
       return 'unknown'
@@ -42,24 +42,39 @@ export class SignInComponent implements OnInit {
   }
 
   getErrorMessageForPassword(){
-    if(this.formSingIn.get('password').hasError('required')){
+    if(this.form.get('password').hasError('required')){
       return 'password is required'
-    } else if(this.formSingIn.get('password').hasError('minlength')){
-      return `password should be more or equal then ${this.formSingIn.get('password').errors.minlength.requiredLength} you enter ${this.formSingIn.get('password').errors.minlength.actualLength} symbol`
-    } else if(this.formSingIn.get('password').hasError('maxlength')){
-      return `password should be less or equal then ${this.formSingIn.get('password').errors.maxlength.requiredLength} you enter ${this.formSingIn.get('password').errors.maxlength.actualLength} symbol`
+    } else if(this.form.get('password').hasError('minlength')){
+      return `password should be more or equal then ${this.form.get('password').errors.minlength.requiredLength} you enter ${this.form.get('password').errors.minlength.actualLength} symbol`
+    } else if(this.form.get('password').hasError('maxlength')){
+      return `password should be less or equal then ${this.form.get('password').errors.maxlength.requiredLength} you enter ${this.form.get('password').errors.maxlength.actualLength} symbol`
     }
     return 'unknown'
   }
 
   submit(){
     // event.preventDefault()
-    console.log('signin')
+    // console.log('signin')
+    // console.log(this.form.value.email)
+    // console.log(this.form.value.password)
+    this.auth.signIn(this.form.value.email, this.form.value.password)
+    // .subscribe(x => console.log('x', x))
+      // .then(x => console.log(x))
+      // .subscribe(x => console.log(x))
+      
   }
   
-  onFormSubmit(){
-    console.log('signin')
-
+  signInWithGoogle(){
+    // console.log(this.auth.test())
+    this.auth.test()
+    .subscribe(x => console.log('x', x))
+    // .then(x => {
+    //   console.log(x)
+    // })
+    // .subscribe( x => {
+    //   console.log('x')
+    //   console.log(x)
+    // })
   }
 
 }
