@@ -18,7 +18,17 @@ export class AuthService {
     private afStore: AngularFirestore,
     private router: Router
   ) {
-    // this.afAuth.
+    // this.user$ = 
+    // this.afAuth.authState
+
+    this.afAuth.authState.subscribe((auth) => {
+      // console.log(auth)
+      // this.authState = auth
+    });
+
+
+    // this.user$ = this.afAuth.authState
+
     // this.user$ = this.afAuth.authState.pipe(
     //   switchMap(user => {
     //     if (user) {
@@ -37,9 +47,21 @@ export class AuthService {
   signIn(email, password): Promise<any>{
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
   }
-  signUp(name, email, password): Observable<any> | Promise<any>{
-    console.log(name, email, password)
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+
+  async signUp(name, email, password){
+    // console.log(name, email, password)
+    const credential = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    return this.updateProfile(credential, {name, age: '22'})
+  }
+
+  private updateProfile(credential, additionalData){
+    const {user} = credential // console.log(user)
+    const data = {
+      name: additionalData.name,
+      email: user.email, // photoURL: user.photoURL, // phoneNumber: user.phoneNumber,
+    }
+    const userRef = this.afStore.doc(`users/${user.uid}`)
+    return userRef.set(data, { merge: true })
   }
 
   // async googleSignin() {

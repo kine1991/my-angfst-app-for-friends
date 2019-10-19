@@ -70,10 +70,8 @@ export class SignUpComponent implements OnInit {
   }
 
   submit(){
-    console.log('123')
     const {name, email, password} = this.form.value
     this.auth.signUp(name, email, password)
-    // console.log('fff', this.form.value)
   }
 
   xx(){

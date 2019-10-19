@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
 
   submit(){
     this.auth.signIn(this.form.value.email, this.form.value.password)
-      
+    .then(x => console.log(x))
   }
   
   signInWithGoogle(){
