@@ -1,6 +1,7 @@
-import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { fromEvent } from 'rxjs';
 
 import { AuthService } from 'src/app/services/main/auth.service';
 import { User } from 'src/app/interface/main/user.model';
@@ -12,10 +13,15 @@ import { User } from 'src/app/interface/main/user.model';
 })
 export class SignInComponent implements OnInit {
 
+
+  @ViewChild('search', {static: true}) searchRef
+
   submitted = false
   message: string
   form: FormGroup
   xxx = 'aaa'
+
+
 
   constructor(
     public auth: AuthService,
@@ -30,6 +36,7 @@ export class SignInComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
     });
   }
+
 
   getErrorMessageForEmail() {
     if(this.form.get('email').hasError('required')){
@@ -53,21 +60,17 @@ export class SignInComponent implements OnInit {
   }
 
   submit(){
-    // event.preventDefault()
-    // console.log('signin')
-    // console.log(this.form.value.email)
-    // console.log(this.form.value.password)
     this.auth.signIn(this.form.value.email, this.form.value.password)
-    // .subscribe(x => console.log('x', x))
-      // .then(x => console.log(x))
-      // .subscribe(x => console.log(x))
       
   }
   
   signInWithGoogle(){
     // console.log(this.auth.test())
-    this.auth.test()
-    .subscribe(x => console.log('x', x))
+    // this.auth.test()
+    // .subscribe(x => console.log('x', x))
+
+
+
     // .then(x => {
     //   console.log(x)
     // })
@@ -75,6 +78,10 @@ export class SignInComponent implements OnInit {
     //   console.log('x')
     //   console.log(x)
     // })
+
+    // console.log(this.form.controls.email.value)
+    // console.log(this.ccc)
+    // console.log(this.searchRef.nativeElement.value)
   }
 
 }

@@ -37,6 +37,10 @@ export class AuthService {
   signIn(email, password): Promise<any>{
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
   }
+  signUp(name, email, password): Observable<any> | Promise<any>{
+    console.log(name, email, password)
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+  }
 
   // async googleSignin() {
   //   const provider = new auth.GoogleAuthProvider();

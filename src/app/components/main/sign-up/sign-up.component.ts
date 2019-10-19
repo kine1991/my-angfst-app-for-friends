@@ -21,9 +21,9 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
-      // email: new FormControl('', [Validators.required, Validators.email]),
-      // password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
-      // passwordConfirm: new FormControl('', [Validators.required, this.checkPasswordsIsMatch.bind(this)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
+      passwordConfirm: new FormControl('', [Validators.required, this.checkPasswordsIsMatch.bind(this)]),
     })
   }
 
@@ -70,7 +70,10 @@ export class SignUpComponent implements OnInit {
   }
 
   submit(){
-    console.log('fff', this.form.value)
+    console.log('123')
+    const {name, email, password} = this.form.value
+    this.auth.signUp(name, email, password)
+    // console.log('fff', this.form.value)
   }
 
   xx(){
