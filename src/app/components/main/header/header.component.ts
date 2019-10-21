@@ -16,6 +16,7 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/main/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -25,16 +26,48 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   isOpen = false
+  isAuthenticated = true
 
-  items = [
+  itemsAuthenticated = [
     { link: '/about', name: 'About' },
     { link: '/home', name: 'Home' },
     { link: '/blog', name: 'Blog' },
+    { link: '/logout', name: 'Logout' },
   ]
+  itemsNotAuthenticated = [
+    { link: '/signin', name: 'Sign In' },
+    { link: '/signup', name: 'Sign Up' },
+  ]
+  items = [
+    { link: '/xxx', name: 'xxx' },
+  ]
+  
+  // auth
 
-  constructor() { }
+
+
+  
+
+  constructor(
+    public auth: AuthService
+  ) { }
 
   ngOnInit() {
+    this.auth.getUserState()
+    .subscribe(user => {
+      if(user){
+        this.items = this.itemsAuthenticated
+        this.isAuthenticated = true
+      } else {
+        this.items = this.itemsNotAuthenticated
+        this.isAuthenticated = false
+      }
+      console.log('u',user)
+    })
+  }
+
+  logout(){
+    this.auth.logout()
   }
 
   toggle(){

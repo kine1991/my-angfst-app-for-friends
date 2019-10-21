@@ -66,22 +66,7 @@ export class SignInComponent implements OnInit {
   
   signInWithGoogle(){
     // console.log(this.auth.test())
-    // this.auth.test()
-    // .subscribe(x => console.log('x', x))
-
-
-
-    // .then(x => {
-    //   console.log(x)
-    // })
-    // .subscribe( x => {
-    //   console.log('x')
-    //   console.log(x)
-    // })
-
-    // console.log(this.form.controls.email.value)
-    // console.log(this.ccc)
-    // console.log(this.searchRef.nativeElement.value)
+    this.auth.googleSignin()
   }
 
 }

@@ -1,5 +1,5 @@
 <mat-card class="sign-in-page-mat-card">
-    <h1>sign-in</h1>
+    <h1>Sign In</h1>
     <h2 class="danger" *ngIf="message">{{message}}</h2>
     <div class="danger" *ngIf="auth.error$ | async as error">{{error}}</div>
     <form [formGroup]="form" (ngSubmit)="submit()" class="sign-in-page-container">
@@ -12,9 +12,8 @@
             <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">{{getErrorMessageForPassword()}}</mat-error>
         </mat-form-field>
 
-        <button type="submit" mat-icon-button >sign-in</button>
-        <button (click)="signInWithGoogle()" mat-icon-button >sign in with google</button>
-        <!-- <button mat-icon-button [disabled]="form.invalid || submitted">sign-in</button> -->
+        <button type="submit" [disabled]="form.invalid || submitted" mat-raised-button color="primary" >Sign In</button>
+        <button (click)="signInWithGoogle()" type="button" mat-stroked-button color="primary" style="margin-top: 1rem" ><mat-icon>3d_rotation</mat-icon>  Sign In with google</button>
     </form>
     
 </mat-card>

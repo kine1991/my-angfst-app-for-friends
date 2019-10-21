@@ -74,8 +74,9 @@ export class SignUpComponent implements OnInit {
     this.auth.signUp(name, email, password)
   }
 
-  xx(){
-    console.log('123')
+  signInWithGoogle(){
+    // console.log(this.auth.test())
+    this.auth.googleSignin()
   }
 
 }

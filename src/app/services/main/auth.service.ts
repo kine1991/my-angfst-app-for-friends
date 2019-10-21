@@ -64,31 +64,49 @@ export class AuthService {
     return userRef.set(data, { merge: true })
   }
 
-  // async googleSignin() {
-  //   const provider = new auth.GoogleAuthProvider();
-  //   const credential = await this.afAuth.auth.signInWithPopup(provider);
-  //   return this.updateUserData(credential.user);
+  async googleSignin() {
+    const provider = new auth.GoogleAuthProvider();
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
+    // console.log(credential)
+    return this.updateUserData(credential);
+  }
+
+  getUserState() {
+    return this.afAuth.authState;
+  }
+  // authStateCange(){
+  //   return this.afAuth.auth.onAuthStateChanged(userData => {
+  //     if(userData){
+  //       return userData
+  //     } else {
+  //       return null
+  //     }
+  //   })
+  //   // return 
   // }
 
-  // async signOut() {
-  //   await this.afAuth.auth.signOut();
-  //   return this.router.navigate(['/']);
-  // }
+  async logout() {
+    await this.afAuth.auth.signOut();
+    return this.router.navigate(['/']);
+  }
 
-  // private updateUserData(user) {
-  //   // Sets user data to firestore on login
-  //   const userRef: AngularFirestoreDocument<User> = this.afStore.doc(`users/${user.uid}`);
-
-  //   const data = {
-  //     uid: user.uid,
-  //     email: user.email,
-  //     displayName: user.displayName,
-  //     photoURL: user.photoURL
-  //   };
-
-  //   return userRef.set(data, { merge: true });
-
-  // }
+  private async updateUserData(credential) {
+  const {additionalUserInfo, user} = credential
+  // если пользователь новый
+  if(additionalUserInfo.isNewUser){
+    const data = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL
+    };
+    console.log('isNewUser')
+    const userRef = this.afStore.doc(`users/${user.uid}`)
+    return await userRef.set(data, { merge: true })
+  }
+  console.log('NotisNewUser')
+  return user
+}
 
 }
 

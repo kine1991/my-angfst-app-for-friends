@@ -6,6 +6,8 @@
         <div class="spacer"></div>
         <ul class="items">
             <li *ngFor="let item of items; index as i" class="item"><a class="link_nav" href="">{{item.name}}</a></li>
+            <li (click)="logout()" *ngIf="isAuthenticated" class="item"><a class="link_nav">Logout</a></li>
+            <!-- <button *ngIf="isAuthenticated">Logout</button> -->
         </ul>
     </mat-toolbar>
     
