@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from '../../components/shared/admin-layout/admin
 import { HeaderForAdminComponent } from '../../components/admin/header-for-admin/header-for-admin.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard.component';
+import { CreateArticleComponent } from '../../components/admin/create-article/create-article.component';
 
 
 
@@ -14,7 +15,8 @@ import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard
   declarations: [
     AdminLayoutComponent, 
     HeaderForAdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateArticleComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,9 @@ import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard
     RouterModule.forChild([
       {path: '', component: AdminLayoutComponent, children: [
         {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full'},
-        {path: 'dashboard', component: DashboardComponent}
+        {path: 'dashboard', component: DashboardComponent},
+        {path: 'create-article', component: CreateArticleComponent},
+
       ]}
     ])
   ],

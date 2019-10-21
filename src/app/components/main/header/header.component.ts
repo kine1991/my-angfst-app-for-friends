@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
     { link: '/about', name: 'About' },
     { link: '/home', name: 'Home' },
     { link: '/blog', name: 'Blog' },
-    { link: '/logout', name: 'Logout' },
   ]
   itemsNotAuthenticated = [
     { link: '/signin', name: 'Sign In' },

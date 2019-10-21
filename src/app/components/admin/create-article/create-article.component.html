@@ -1,0 +1,31 @@
+<mat-card class="sign-up-page-mat-card">
+    <h1>Create Article</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" type="submit" class="create-article-page-container">
+        <mat-form-field>
+            <input matInput placeholder="Enter name article" formControlName="name" required>
+            <mat-error *ngIf="form.get('name').invalid && form.get('name').touched">{{getErrorMessageForName()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text"  placeholder="Enter author" formControlName="author" required>
+            <mat-error *ngIf="form.get('author').invalid && form.get('author').touched">{{getErrorMessageForAuthor()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Enter tags" formControlName="tags" type="password">
+            <!-- <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">{{getErrorMessageForPassword()}}</mat-error> -->
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text"  placeholder="Enter bodyBrief" formControlName="bodyBrief" required>
+            <!-- <mat-error *ngIf="form.get('bodyBrief').invalid && form.get('bodyBrief').touched">{{getErrorMessageForBodyBrief()}}</mat-error> -->
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text"  placeholder="Enter body" formControlName="body" required>
+            <mat-error *ngIf="form.get('body').invalid && form.get('body').touched">{{getErrorMessageForBody()}}</mat-error>
+        </mat-form-field>
+        
+
+        <!-- <button type="submit" mat-raised-button color="primary" >Sign Up</button> -->
+        <button type="submit" [disabled]="form.invalid || submitted" mat-raised-button color="primary" >Sign Up</button>
+    </form>
+    
+</mat-card>
