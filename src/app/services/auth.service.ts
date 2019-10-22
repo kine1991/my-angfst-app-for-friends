@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {AngularFirestore,AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { User } from '../../interface/main/user.model';
+// import { switchMap } from 'rxjs/operators';
+// import { User } from '../interface/main/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -18,8 +18,7 @@ export class AuthService {
     private afStore: AngularFirestore,
     private router: Router
   ) {
-    // this.user$ = 
-    // this.afAuth.authState
+    this.user$ = this.afAuth.authState
 
     this.afAuth.authState.subscribe((auth) => {
       // console.log(auth)

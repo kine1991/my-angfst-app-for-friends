@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-create-article',
@@ -9,8 +11,12 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class CreateArticleComponent implements OnInit {
 
   form: FormGroup
+  uid
 
-  constructor() { }
+  constructor(
+    public auth: AuthService,
+    public firestore: ArticleService
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -19,6 +25,15 @@ export class CreateArticleComponent implements OnInit {
       tags: new FormControl([]),
       bodyBrief: new FormControl(''),
       body: new FormControl('', [Validators.required, Validators.minLength(30)]),
+    })
+
+    this.auth.user$.subscribe(user => {
+      // console.log('user', user)
+      if(user){
+        this.uid = user.uid
+      }else{
+        this.uid = null
+      }
     })
   }
 
@@ -65,7 +80,10 @@ export class CreateArticleComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.form)
+    const data = this.form.value
+    data.uid = this.uid
+    console.log(data)
+    this.firestore.createArticle(data)
   }
 
 }
