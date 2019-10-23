@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/main/login/login.component';
 import { SignInComponent } from './components/main/sign-in/sign-in.component';
 import { SignUpComponent } from './components/main/sign-up/sign-up.component';
+import { ArticleComponent } from './components/main/article/article.component';
+import { ArticlesComponent } from './components/main/articles/articles.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SignUpComponent } from './components/main/sign-up/sign-up.component';
     LoginComponent,
     SignInComponent,
     SignUpComponent,
+    ArticleComponent,
+    ArticlesComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { HomeComponent } from './components/main/home/home.component';
 import { RegisterComponent } from './components/main/register/register.component';
 import { SignInComponent } from './components/main/sign-in/sign-in.component';
 import { SignUpComponent } from './components/main/sign-up/sign-up.component';
+import { ArticlesComponent } from './components/main/articles/articles.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'signin', component: SignInComponent},
     {path: 'signup', component: SignUpComponent},
-    {path: 'register', component: RegisterComponent}
+    {path: 'register', component: RegisterComponent},
+    {path: 'articles', component: ArticlesComponent},
   ]},
   {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'}
 ];

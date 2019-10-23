@@ -18,11 +18,10 @@
             <input matInput type="text"  placeholder="Enter bodyBrief" formControlName="bodyBrief" required>
             <!-- <mat-error *ngIf="form.get('bodyBrief').invalid && form.get('bodyBrief').touched">{{getErrorMessageForBodyBrief()}}</mat-error> -->
         </mat-form-field>
-        <mat-form-field>
-            <input matInput type="text"  placeholder="Enter body" formControlName="body" required>
+        <div class="body-quill">
+            <quill-editor formControlName="body"></quill-editor>
             <mat-error *ngIf="form.get('body').invalid && form.get('body').touched">{{getErrorMessageForBody()}}</mat-error>
-        </mat-form-field>
-        
+        </div>
 
         <button type="submit" mat-raised-button color="primary" >Sign Up</button>
         <!-- <button type="submit" [disabled]="form.invalid || submitted" mat-raised-button color="primary" >Sign Up</button> -->

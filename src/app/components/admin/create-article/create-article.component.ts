@@ -82,6 +82,7 @@ export class CreateArticleComponent implements OnInit {
   submit(){
     const data = this.form.value
     data.uid = this.uid
+    data.date = Date.now()
     console.log(data)
     this.firestore.createArticle(data)
   }
