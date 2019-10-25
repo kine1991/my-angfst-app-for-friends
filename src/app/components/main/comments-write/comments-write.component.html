@@ -1,0 +1,11 @@
+<mat-card class="comments-write" *ngIf="currentUser; loaging">
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="submit()" type="submit" class="comments-write-form">
+        <img mat-card-avatar [src]="currentUser.photoURL" alt="">
+        <!-- <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt=""> -->
+        <mat-form-field >
+            <input matInput placeholder="Enter your comment"  formControlName="comment">
+        </mat-form-field>
+        <button [disabled]="!form.value.comment" type="submit" mat-icon-button color="primary"><mat-icon>send</mat-icon></button>
+    </form>
+
+</mat-card>

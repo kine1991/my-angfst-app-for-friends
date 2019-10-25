@@ -1,17 +1,23 @@
 
-<mat-card class="container card" *ngIf="post; else loading">
-    <mat-card-actions>
-        <button [routerLink]="['/articles']" mat-button><mat-icon>keyboard_backspace</mat-icon> Back</button>
-    </mat-card-actions>
-    <mat-card-header>
-        <mat-card-title class="card__title"><h1>{{post.name}}</h1></mat-card-title>
-        <mat-card-subtitle>{{post.author}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <quill-view-html [content]="post.body"></quill-view-html>
-    </mat-card-content>
-</mat-card>
+<div *ngIf="post">
+    <mat-card class="container card" *ngIf="post; else loading">
+        <mat-card-actions>
+            <button [routerLink]="['/articles']" mat-button><mat-icon>keyboard_backspace</mat-icon> Back</button>
+        </mat-card-actions>
+        <mat-card-header>
+            <mat-card-title class="card__title"><h1>{{post.name}}</h1></mat-card-title>
+            <mat-card-subtitle>{{post.author}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <quill-view-html [content]="post.body"></quill-view-html>
+        </mat-card-content>
+    </mat-card>
 
-<ng-template #loading>
-        <mat-spinner class="spinner"></mat-spinner>
-</ng-template>
+    <ng-template #loading>
+            <mat-spinner class="spinner"></mat-spinner>
+    </ng-template>
+
+    <app-comments-write [postId]="post.id"></app-comments-write>
+    <app-comments-read></app-comments-read>
+
+</div>

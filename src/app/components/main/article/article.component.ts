@@ -27,6 +27,7 @@ export class ArticleComponent implements OnInit {
     )
     .subscribe(data => {
       this.post = data
+      // console.log('data', data)
     })
   }
 

@@ -1,0 +1,27 @@
+.comments-write{
+    margin-top: 2rem;
+}
+.comments-write-form {
+    
+}
+
+.comments-write-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+
+    // & > * {
+    //     padding: 2rem;
+    // }
+}
+
+mat-form-field {
+    flex: 1;
+    margin: 0 1rem;
+}
+
+
+// .mat-input-element {
+//     // color: red;
+//   }

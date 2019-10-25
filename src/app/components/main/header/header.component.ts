@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
         this.items = this.itemsNotAuthenticated
         this.isAuthenticated = false
       }
-      console.log('u',user)
+      // console.log('u',user)
     })
   }
 

@@ -18,6 +18,8 @@ import { SignInComponent } from './components/main/sign-in/sign-in.component';
 import { SignUpComponent } from './components/main/sign-up/sign-up.component';
 import { ArticleComponent } from './components/main/article/article.component';
 import { ArticlesComponent } from './components/main/articles/articles.component';
+import { CommentsWriteComponent } from './components/main/comments-write/comments-write.component';
+import { CommentsReadComponent } from './components/main/comments-read/comments-read.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ArticlesComponent } from './components/main/articles/articles.component
     SignUpComponent,
     ArticleComponent,
     ArticlesComponent,
+    CommentsWriteComponent,
+    CommentsReadComponent,
   ],
   imports: [
     BrowserModule,
