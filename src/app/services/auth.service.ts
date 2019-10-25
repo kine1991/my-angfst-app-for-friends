@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 // import { switchMap } from 'rxjs/operators';
 // import { User } from '../interface/main/user.model';
 
@@ -18,12 +19,33 @@ export class AuthService {
     private afStore: AngularFirestore,
     private router: Router
   ) {
-    this.user$ = this.afAuth.authState
+    this.user$ = this.afAuth.authState.pipe(
+      map(user => {
+        return {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          phoneNumber: user.phoneNumber,
+          photoURL: user.photoURL,
+        }
+      })
+    );
 
-    this.afAuth.authState.subscribe((auth) => {
-      // console.log(auth)
-      // this.authState = auth
-    });
+    // this.afAuth.authState.pipe(
+    //   map(user => {
+    //     return {
+    //       uid: user.uid,
+    //       email: user.email,
+    //       displayName: user.displayName,
+    //       phoneNumber: user.phoneNumber,
+    //       photoURL: user.photoURL,
+    //     }
+    //   })
+    // )
+    // .subscribe((auth) => {
+    //   console.log(auth)
+    //   // this.authState = auth
+    // });
 
 
     // this.user$ = this.afAuth.authState
@@ -71,7 +93,17 @@ export class AuthService {
   }
 
   getUserState() {
-    return this.afAuth.authState;
+    return this.afAuth.authState.pipe(
+      map(user => {
+        return {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          phoneNumber: user.phoneNumber,
+          photoURL: user.photoURL,
+        }
+      })
+    );
   }
   // authStateCange(){
   //   return this.afAuth.auth.onAuthStateChanged(userData => {

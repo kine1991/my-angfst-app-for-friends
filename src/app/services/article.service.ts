@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { map, tap, mergeMap, concatMap, scan, toArray } from 'rxjs/operators';
+import { map, tap, mergeMap, concatMap, scan, toArray, switchMap } from 'rxjs/operators';
 import { concat } from 'rxjs';
 
 @Injectable({
@@ -41,16 +41,15 @@ export class ArticleService {
       }),
       toArray()
     )
+  }
 
-    // .subscribe(data => {
-    //   this.posts = data
-    //   // this.posts = [].push(data)
-    //   // console.log(data)
-    //   // console.log(this.posts.push(data))
-    // })
-    // await docRef.snapshotChanges().subscribe(x => console.log(x))
-
-    // this.afStore.collection('articles').snapshotChanges().subscribe()
+  getArticle(id){
+    let docRef = this.afStore.collection('articles').doc(id)
+    return docRef.get().pipe(
+      map(doc => {
+        return {id: doc.id, ...doc.data()}
+      })
+    )
   }
 }
 

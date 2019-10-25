@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/main/register/register.component
 import { SignInComponent } from './components/main/sign-in/sign-in.component';
 import { SignUpComponent } from './components/main/sign-up/sign-up.component';
 import { ArticlesComponent } from './components/main/articles/articles.component';
+import { ArticleComponent } from './components/main/article/article.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'signup', component: SignUpComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'articles', component: ArticlesComponent},
+    {path: 'articles/:id', component: ArticleComponent},
   ]},
   {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'}
 ];
