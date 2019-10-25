@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comments-read',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsReadComponent implements OnInit {
 
-  constructor() { }
+  @Input() articleId: string
+  comments
+
+  constructor(
+    public db: CommentService
+  ) { }
 
   ngOnInit() {
+    // console.log('articleId', this.articleId)
+    this.db.readComments(this.articleId)
+    .subscribe(comments => {
+      console.log(comments)
+      this.comments = comments;
+    })
   }
 
 }

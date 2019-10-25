@@ -1,0 +1,36 @@
+.comments-read{
+    margin-top: 2rem;
+}
+
+.comment{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // background: rgb(164, 164, 184);
+    // height: 100px;
+}
+
+.content{
+    display: flex;
+    margin: 1rem auto;
+}
+
+.image{
+    // background: darkcyan;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    // background: darkgray;
+    flex: 1;
+}
+
+.name-and-date{
+    display: flex;
+    // margin: 0 1rem;
+    & > * {
+        margin: 0 .5rem;
+    }
+}
+

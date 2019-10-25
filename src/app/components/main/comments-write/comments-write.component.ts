@@ -13,7 +13,7 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CommentsWriteComponent implements OnInit {
 
-  @Input() postId: string
+  @Input() articleId: string
   form: FormGroup
   currentUser
 
@@ -28,7 +28,7 @@ export class CommentsWriteComponent implements OnInit {
     // this.route.paramMap.subscribe(params => {
     //   this.
     // })
-    // console.log(this.postId)
+    // console.log(this.articleId)
 
     this.auth.user$.pipe(
       delay(2000)
@@ -44,14 +44,17 @@ export class CommentsWriteComponent implements OnInit {
 
   submit(){
     const data = {
-      uid: this.currentUser.uid,
-      postId: this.postId,
-      ...this.form.value
-    }
-    this.db.createComment(data)
+      // uid: this.currentUser.uid,
+      user: this.currentUser,
+      articleId: this.articleId,
+      ...this.form.value,
+      date: Date.now()
+    };
+    this.db.createComment(data);
+    this.form.reset();
     // console.log(data)
     // console.log(this.currentUser)
-    // console.log(this.postId)
+    // console.log(this.articleId)
     // console.log(this.form.value)
   }
 }

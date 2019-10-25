@@ -15,7 +15,7 @@ export class CreateArticleComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    public firestore: ArticleService
+    public db: ArticleService
   ) { }
 
   ngOnInit() {
@@ -84,7 +84,7 @@ export class CreateArticleComponent implements OnInit {
     data.uid = this.uid
     data.date = Date.now()
     console.log(data)
-    this.firestore.createArticle(data)
+    this.db.createArticle(data)
   }
 
 }

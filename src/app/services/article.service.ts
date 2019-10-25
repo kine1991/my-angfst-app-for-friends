@@ -34,7 +34,6 @@ export class ArticleService {
       map(x => x.docs),
       mergeMap(docs => docs),
       map(docs => {
-        // console.log('docs', docs)
         return {
           id: docs.id, ...docs.data()
         }

@@ -11,13 +11,13 @@
         <mat-card-content>
             <quill-view-html [content]="post.body"></quill-view-html>
         </mat-card-content>
-    </mat-card>
+
 
     <ng-template #loading>
             <mat-spinner class="spinner"></mat-spinner>
     </ng-template>
 
-    <app-comments-write [postId]="post.id"></app-comments-write>
-    <app-comments-read></app-comments-read>
-
+    <app-comments-write [articleId]="post.id"></app-comments-write>
+    <app-comments-read [articleId]="post.id"></app-comments-read>
+</mat-card>
 </div>
