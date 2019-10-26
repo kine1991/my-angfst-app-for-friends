@@ -11,7 +11,6 @@ h1.header-name {
     color: white;
     border: none;
     outline:none;
-    // z-index: 2;
 }
 
 .items{
@@ -61,3 +60,10 @@ h1.header-name {
 //     padding: 2rem 3rem;
 // }
 
+mat-nav-list{
+    width: 300px;
+}
+
+mat-icon{
+    margin-right: .5rem;
+}

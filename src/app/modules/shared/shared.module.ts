@@ -5,6 +5,7 @@ import { QuillModule } from 'ngx-quill'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 // import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { environment } from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
@@ -18,8 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    QuillModule.forRoot(),
+    // FlexLayoutModule,
     // AngularFireStorageModule,
-    QuillModule.forRoot()
   ],
   exports: [
     HttpClientModule,
