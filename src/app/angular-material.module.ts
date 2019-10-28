@@ -13,6 +13,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
     imports: [],
@@ -29,7 +32,10 @@ import {MatDividerModule} from '@angular/material/divider';
         MatInputModule,
         MatTableModule,
         MatProgressSpinnerModule,
-        MatDividerModule
+        MatDividerModule,
+        MatTabsModule,
+        MatSelectModule,
+        MatDialogModule
     ],
     providers: [],
 })

@@ -8,6 +8,7 @@ import { HeaderForAdminComponent } from '../../components/admin/header-for-admin
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard.component';
 import { CreateArticleComponent } from '../../components/admin/create-article/create-article.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 
 
@@ -28,7 +29,7 @@ import { CreateArticleComponent } from '../../components/admin/create-article/cr
       {path: '', component: AdminLayoutComponent, children: [
         {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full'},
         {path: 'dashboard', component: DashboardComponent},
-        {path: 'create-article', component: CreateArticleComponent},
+        {path: 'create-article', component: CreateArticleComponent, canActivate: [AuthGuard]},
 
       ]}
     ])

@@ -7,12 +7,14 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthData } from '../interface/main/auth-data.model';
 // import { switchMap } from 'rxjs/operators';
 // import { User } from '../interface/main/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   user$: Observable<any>;
+  isAuth: boolean = true
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -30,49 +32,17 @@ export class AuthService {
         }
       })
     );
-
-    // this.afAuth.authState.pipe(
-    //   map(user => {
-    //     return {
-    //       uid: user.uid,
-    //       email: user.email,
-    //       displayName: user.displayName,
-    //       phoneNumber: user.phoneNumber,
-    //       photoURL: user.photoURL,
-    //     }
-    //   })
-    // )
-    // .subscribe((auth) => {
-    //   console.log(auth)
-    //   // this.authState = auth
-    // });
-
-
-    // this.user$ = this.afAuth.authState
-
-    // this.user$ = this.afAuth.authState.pipe(
-    //   switchMap(user => {
-    //     if (user) {
-    //       return this.afStore.doc<User>(`users/${user.uid}`).valueChanges();
-    //     } else {
-    //       return of(null);
-    //     }
-    //   })
-    // );
   }
 
-  test(): Observable<any>{
-    return this.afAuth.authState
+
+  signIn(authData: AuthData){
+    return this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password)
   }
 
-  signIn(email, password): Promise<any>{
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-  }
-
-  async signUp(name, email, password){
+  async signUp(authData: AuthData){
     // console.log(name, email, password)
-    const credential = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-    return this.updateProfile(credential, {name, age: '22'})
+    const credential = await this.afAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password)
+    return this.updateProfile(credential, {name: authData.name})
   }
 
   private updateProfile(credential, additionalData){
@@ -92,19 +62,25 @@ export class AuthService {
     return this.updateUserData(credential);
   }
 
-  getUserState() {
+  getUser() {
     return this.afAuth.authState.pipe(
       map(user => {
-        return {
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          phoneNumber: user.phoneNumber,
-          photoURL: user.photoURL,
+        if(user){
+          return {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            phoneNumber: user.phoneNumber,
+            photoURL: user.photoURL,
+          }
         }
       })
     );
   }
+
+  // isAuth(){
+  //   return this.afAuth.authState
+  // }
   // authStateCange(){
   //   return this.afAuth.auth.onAuthStateChanged(userData => {
   //     if(userData){

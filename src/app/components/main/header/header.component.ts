@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 export interface ListMenu {
@@ -12,10 +12,11 @@ export interface ListMenu {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   isOpen = false
   isAuthenticated = true
+  authSubscription
 
   itemsAuthenticated: ListMenu[] = [
     { link: '/admin/create-article', name: 'Create Article', icon: 'info' },
@@ -26,22 +27,15 @@ export class HeaderComponent implements OnInit {
     { link: '/signin', name: 'Sign In', icon: 'info' },
     { link: '/signup', name: 'Sign Up', icon: 'info' },
   ]
-  items: ListMenu[] = [
-    { link: '/xxx', name: 'xxx', icon: 'info' },
-  ]
-  
-  // auth
+  items: ListMenu[] = []
 
-
-
-  
 
   constructor(
     public auth: AuthService
   ) { }
 
   ngOnInit() {
-    this.auth.getUserState()
+    this.authSubscription = this.auth.getUser()
     .subscribe(user => {
       if(user){
         this.items = this.itemsAuthenticated
@@ -52,6 +46,10 @@ export class HeaderComponent implements OnInit {
       }
       // console.log('u',user)
     })
+  }
+
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 
   logout(){

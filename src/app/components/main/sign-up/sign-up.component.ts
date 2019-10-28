@@ -48,6 +48,18 @@ export class SignUpComponent implements OnInit {
     }
   }
 
+  submit(){
+    const {name, email, password} = this.form.value;
+    this.auth.signUp({name, email, password}).then(() => {
+      this.router.navigate(['/'])
+    });
+  }
+
+  signInWithGoogle(){
+    // console.log(this.auth.test())
+    this.auth.googleSignin()
+  }
+
   getErrorMessageForEmail() {
     if(this.form.get('email').hasError('required')){
       return 'email is required'
@@ -67,16 +79,6 @@ export class SignUpComponent implements OnInit {
       return `password should be less or equal then ${this.form.get('password').errors.maxlength.requiredLength} you enter ${this.form.get('password').errors.maxlength.actualLength} symbol`
     }
     return 'unknown'
-  }
-
-  submit(){
-    const {name, email, password} = this.form.value
-    this.auth.signUp(name, email, password)
-  }
-
-  signInWithGoogle(){
-    // console.log(this.auth.test())
-    this.auth.googleSignin()
   }
 
 }

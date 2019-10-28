@@ -19,6 +19,10 @@ import { ArticleComponent } from './components/main/article/article.component';
 import { ArticlesComponent } from './components/main/articles/articles.component';
 import { CommentsWriteComponent } from './components/main/comments-write/comments-write.component';
 import { CommentsReadComponent } from './components/main/comments-read/comments-read.component';
+import { AboutComponent } from './components/main/about/about.component';
+import { NewTraniningComponent } from './components/main/new-tranining/new-tranining.component';
+import { CurrentTraniningComponent } from './components/main/current-tranining/current-tranining.component';
+import { StopTrainingComponent } from './components/main/current-tranining/stop-training.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { CommentsReadComponent } from './components/main/comments-read/comments-
     ArticlesComponent,
     CommentsWriteComponent,
     CommentsReadComponent,
+    AboutComponent,
+    NewTraniningComponent,
+    CurrentTraniningComponent,
+    StopTrainingComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +53,7 @@ import { CommentsReadComponent } from './components/main/comments-read/comments-
     FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [StopTrainingComponent] // используем потому что будет динамически появляться
 })
 export class AppModule { }
