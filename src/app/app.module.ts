@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,7 +50,7 @@ import { StopTrainingComponent } from './components/main/current-tranining/stop-
     AngularMaterialModule,
     SharedModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    // FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],

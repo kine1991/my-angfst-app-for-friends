@@ -56,6 +56,10 @@ export class DashboardArticleComponent implements OnInit, AfterViewInit {
     })
   }
 
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   ngAfterViewInit() {
     // this.dataSource.sort = this.sort;
   }
