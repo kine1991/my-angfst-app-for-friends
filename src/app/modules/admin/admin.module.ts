@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard.component';
 import { CreateArticleComponent } from '../../components/admin/create-article/create-article.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { DashboardArticleComponent } from '../../components/admin/dashboard-article/dashboard-article.component';
 
 
 
@@ -17,7 +18,8 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
     AdminLayoutComponent, 
     HeaderForAdminComponent,
     DashboardComponent,
-    CreateArticleComponent
+    CreateArticleComponent,
+    DashboardArticleComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +29,9 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
     SharedModule,
     RouterModule.forChild([
       {path: '', component: AdminLayoutComponent, children: [
-        {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full'},
+        {path: '', redirectTo: '/admin/dashboard-article', pathMatch: 'full'},
         {path: 'dashboard', component: DashboardComponent},
+        {path: 'dashboard-article', component: DashboardArticleComponent},
         {path: 'create-article', component: CreateArticleComponent, canActivate: [AuthGuard]},
 
       ]}
