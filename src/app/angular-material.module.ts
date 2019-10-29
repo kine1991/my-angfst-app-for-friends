@@ -17,6 +17,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
+import {MatSortModule} from '@angular/material/sort';
+
 @NgModule({
     imports: [],
     exports: [
@@ -35,7 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatDividerModule,
         MatTabsModule,
         MatSelectModule,
-        MatDialogModule
+        MatDialogModule,
+        MatSortModule
     ],
     providers: [],
 })
